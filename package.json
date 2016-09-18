@@ -1,6 +1,6 @@
 {
   "name": "tneu-news",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get latest news from tneu.edu.ua",
   "main": "index.js",
   "scripts": {
