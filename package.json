@@ -1,0 +1,26 @@
+{
+  "name": "tneu-news",
+  "version": "1.0.0",
+  "description": "Get latest news from tneu.edu.ua",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vladgolubev/tneu-news.git"
+  },
+  "keywords": [
+    "tneu",
+    "news"
+  ],
+  "author": "Vlad Holubiev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladgolubev/tneu-news/issues"
+  },
+  "homepage": "https://github.com/vladgolubev/tneu-news#readme",
+  "dependencies": {
+    "tneu-news-parser": "^1.0.2"
+  }
+}
