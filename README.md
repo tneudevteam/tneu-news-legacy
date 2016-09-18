@@ -68,8 +68,7 @@ Returns a Promise resolving article object:
   title: 'На кафедрі фінансів імені...',
   date: 'Sun Sep 18 2016 19:31:25 GMT+0300 (EEST)',
   imageLink: 'http://www.tneu.edu.ua/uploads/posts/2016-09/....',
-  author: 'Відділ інформації та зв'
-  язків з громадськістю ',
+  author: 'Відділ інформації та зв`язків з громадськістю ',
   text: '14 вересня 2016 р. студенти та викладачі кафедри фінансів...',
   photos: ['http://www.tneu.edu.ua/uploads/posts/...', '....'],
   attachments: [{
