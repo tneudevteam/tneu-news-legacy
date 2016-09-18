@@ -1,5 +1,9 @@
 # TNEU News
 
+> Get latest news from [tneu.edu.ua](http://www.tneu.edu.ua/news/)
+
+[![npm](https://img.shields.io/npm/v/tneu-news.svg?maxAge=2592000)](https://www.npmjs.com/package/tneu-news)
+
 ## Install
 
 Ensure you have [Node.js](https://nodejs.org) version 4 or higher installed. Then run the following:
