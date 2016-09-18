@@ -38,7 +38,7 @@ Get specific number of news snippets by page number
 
 Returns a Promise resolving array of objects:
 
-```json
+```javascript
 [
   {
     title: 'На кафедрі фінансів імені...',
@@ -57,7 +57,7 @@ Get news article by direct link
 
 Returns a Promise resolving article object:
 
-```json
+```javascript
 {
   title: 'На кафедрі фінансів імені...',
   date: 'Sun Sep 18 2016 19:31:25 GMT+0300 (EEST)',
