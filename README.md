@@ -3,6 +3,8 @@
 > Get latest news from [tneu.edu.ua](http://www.tneu.edu.ua/news/)
 
 [![npm](https://img.shields.io/npm/v/tneu-news.svg?maxAge=2592000)](https://www.npmjs.com/package/tneu-news)
+[![Build Status](https://travis-ci.org/vladgolubev/tneu-news.svg?branch=master)](https://travis-ci.org/vladgolubev/tneu-news)
+[![Coverage Status](https://coveralls.io/repos/github/vladgolubev/tneu-news/badge.svg?branch=master)](https://coveralls.io/github/vladgolubev/tneu-news?branch=master)
 
 ## Install
 
