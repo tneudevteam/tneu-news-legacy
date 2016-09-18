@@ -11,17 +11,75 @@ $ npm install tneu-news --save
 ## Usage
 
 ```javascript
+
 const news = require('tneu-news');
 
+news.getSnippets()
+  .then(snippets => {
+    // Array of snippets
+  });
+
+news.getArticle('http://www.tneu.edu.ua/news/9671-naukovo-praktychne-zabezpechennia.html')
+  .then(article => {
+    // Article object
+  });
 
 ```
 
+## API
+
+### getSnippets([page], [count])
+
+Get specific number of news snippets by page number
+
+| [page]       | [count]       |
+| ------------ | ------------- |
+| Number (`1`) | Number (`15`) |
+
+Returns a Promise resolving array of objects:
+
+```json
+[
+  {
+    title: 'На кафедрі фінансів імені...',
+    date: 'Sun Sep 18 2016 19:31:25 GMT+0300 (EEST)',
+    topic: 'Міжнародні програми',
+    imageLink: 'http://www.tneu.edu.ua/uploads/posts/2016-09/....',
+    description: '14 вересня 2016 р. студенти та викладачі кафедри фінансів...',
+    readMoreLink: 'http://www.tneu.edu.ua/news/9678-na-kafedri....'
+  }, {/* 14 more... */}
+]
+```
+
+### getArticle(link)
+
+Get news article by direct link
+
+Returns a Promise resolving article object:
+
+```json
+{
+  title: 'На кафедрі фінансів імені...',
+  date: 'Sun Sep 18 2016 19:31:25 GMT+0300 (EEST)',
+  imageLink: 'http://www.tneu.edu.ua/uploads/posts/2016-09/....',
+  author: 'Відділ інформації та зв'
+  язків з громадськістю ',
+  text: '14 вересня 2016 р. студенти та викладачі кафедри фінансів...',
+  photos: ['http://www.tneu.edu.ua/uploads/posts/...', '....'],
+  attachments: [{
+    name: '....',
+    link: '....'
+  }]
+}
+```
+
+Rejects a Promise in case of invalid link.
 
 ## Development
 
 ### Tests
 
-Used: chai, mocha
+Used: chai, mocha, nock, sinon, mockery
 
 ```
 $ npm test

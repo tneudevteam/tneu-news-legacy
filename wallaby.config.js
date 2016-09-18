@@ -1,13 +1,11 @@
 module.exports = function() {
   return {
     files: [
-      'index.js',
-      'lib/*.js',
-      'test/**/*.test.html'
+      'index.js'
     ],
 
     tests: [
-      'test/**/*.test.js'
+      'test.js'
     ],
 
     testFramework: 'mocha',

@@ -4,7 +4,9 @@
   "description": "Get latest news from tneu.edu.ua",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test.js",
+    "lint": "eslint . --fix --format=node_modules/eslint-formatter-pretty",
+    "test": "./node_modules/mocha/bin/mocha test.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,18 @@
   },
   "homepage": "https://github.com/vladgolubev/tneu-news#readme",
   "dependencies": {
-    "tneu-news-parser": "^1.0.2"
+    "got": "^6.5.0",
+    "tneu-news-parser": "^1.0.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-google": "^0.6.0",
+    "eslint-formatter-pretty": "^1.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "mockery": "^1.7.0",
+    "nock": "^8.0.0",
+    "sinon": "^1.17.5"
   }
 }

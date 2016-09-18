@@ -10,6 +10,7 @@
     "max-len": [
       "error",
       100
-    ]
+    ],
+    "no-unused-expressions": 0
   }
 }
