@@ -11,7 +11,7 @@
 Ensure you have [Node.js](https://nodejs.org) version 4 or higher installed. Then run the following:
 
 ```
-$ npm install tneu-news --save
+$ yarn add tneu-news
 ```
 
 ## Usage
@@ -82,26 +82,6 @@ Rejects a Promise in case of invalid link.
 
 ## Development
 
-### Tests
-
-Used: chai, mocha, nock, sinon, mockery
-
-```
-$ npm test
-```
-
-### Coverage
-
-Used: istanbul
-
-```
-$ npm run coverage
-```
-
-### Linting
-
-Used: eslint, eslint-config-google
-
-```
-$ npm run lint
-```
+* `npm t`
+* `npm run coverage`
+* `npm run lint`

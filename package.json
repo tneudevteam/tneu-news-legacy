@@ -4,9 +4,9 @@
   "description": "Get latest news from tneu.edu.ua",
   "main": "index.js",
   "scripts": {
-    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test.js",
+    "coverage": "jest --coverage",
     "lint": "eslint . --fix --format=node_modules/eslint-formatter-pretty",
-    "test": "./node_modules/mocha/bin/mocha test.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,8 @@
     "eslint-formatter-pretty": "^1.0.0",
     "jest": "^20.0.4",
     "nock": "^9.0.13"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
