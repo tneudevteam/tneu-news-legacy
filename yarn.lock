@@ -2537,9 +2537,9 @@ tmpl@1.0.x:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
 
-tneu-news-parser@^1.0.5:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/tneu-news-parser/-/tneu-news-parser-1.0.6.tgz#a4996d1a3977c502a46e67f6519a1ce59af81c73"
+tneu-news-parser@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/tneu-news-parser/-/tneu-news-parser-1.0.7.tgz#edf1a8f7495ea6c7acd1f13161c43d94a08061b3"
   dependencies:
     cheerio "^1.0.0-rc.1"
     condense-whitespace "^1.0.0"

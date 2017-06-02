@@ -24,7 +24,7 @@
   "homepage": "https://github.com/tneudevteam/tneu-news#readme",
   "dependencies": {
     "got": "^7.0.0",
-    "tneu-news-parser": "^1.0.5"
+    "tneu-news-parser": "^1.0.7"
   },
   "devDependencies": {
     "eslint": "^3.5.0",
