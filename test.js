@@ -1,92 +1,72 @@
-'use strict';
-const expect = require('chai').expect;
+jest.mock('tneu-news-parser');
+
 const nock = require('nock');
-const sinon = require('sinon');
-const mockery = require('mockery');
+const news = require('tneu-news-parser');
+const index = require('.');
 
-describe('News', function() {
-  const newsParserMock = {
-    parseArticle: sinon.stub().returns({}),
-    parseArticleSnippets: sinon.stub().returns([{}, {}, {}, {}, {}])
-  };
-  let index;
+news.parseArticle.mockImplementation(() => ({}));
+news.parseArticleSnippets.mockImplementation(() => [{}, {}, {}, {}, {}]);
 
-  before(function() {
-    mockery.enable({
-      warnOnReplace: false,
-      warnOnUnregistered: false
+afterEach(() => {
+  nock.cleanAll();
+});
+
+it('should define two methods', () => {
+  expect(index.getArticle).toBeInstanceOf(Function);
+  expect(index.getSnippets).toBeInstanceOf(Function);
+});
+
+it('should make request to tneu to get list of snippets', () => {
+  const api = nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
+
+  return index.getSnippets().then(() => {
+    expect(api.isDone()).toBeTruthy();
+  });
+});
+
+it('should make request for news snippets with passed page number', () => {
+  const api = nock('http://www.tneu.edu.ua')
+    .get(/\/news/)
+    .reply(200, uri => {
+      expect(uri).toBe('/news/page/3');
     });
 
-    mockery.registerMock('tneu-news-parser', newsParserMock);
-
-    index = require('./index');
+  return index.getSnippets(3).then(() => {
+    expect(api.isDone()).toBeTruthy();
   });
+});
 
-  afterEach(function() {
-    newsParserMock.parseArticle.reset();
-    newsParserMock.parseArticleSnippets.reset();
-    nock.cleanAll();
+it('should call parser to get list of snippets', () => {
+  nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
+
+  return index.getSnippets().then(() => {
+    expect(news.parseArticleSnippets).toBeCalled();
   });
+});
 
-  it('should define two methods', function() {
-    expect(index.getArticle).to.be.a('function');
-    expect(index.getSnippets).to.be.a('function');
+it('should return a requested number of snippets', () => {
+  nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
+
+  return index.getSnippets(null, 3).then(snippets => {
+    expect(snippets).toHaveLength(3);
   });
+});
 
-  it('should make request to tneu to get list of snippets', function() {
-    const api = nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
+it('should make request to tneu to get article', () => {
+  const url = 'http://www.tneu.edu.ua/news/9585-v-profkomi-studentiv';
+  const api = nock('http://www.tneu.edu.ua').get(/\/news*/).reply(200);
 
-    return index.getSnippets()
-      .then(() => {
-        expect(api.isDone()).to.be.true;
-      });
-  });
+  return index.getArticle(url)
+    .then(() => {
+      expect(api.isDone()).toBeTruthy();
+    });
+});
 
-  it('should make request for news snippets with passed page number', function() {
-    const api = nock('http://www.tneu.edu.ua')
-      .get(/\/news/)
-      .reply(200, uri => {
-        expect(uri).to.equal('/news/page/3');
-      });
+it('should reject an error if article not found', () => {
+  const url = 'http://www.tneu.edu.ua/news/9585-v-profkomi-studentiv';
+  nock('http://www.tneu.edu.ua').get(/\/news*/).reply(404);
 
-    return index.getSnippets(3)
-      .then(() => {
-        expect(api.isDone()).to.be.true;
-      });
-  });
-
-  it('should call parser to get list of snippets', function() {
-    nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
-    return index.getSnippets()
-      .then(() => {
-        expect(newsParserMock.parseArticleSnippets.called).to.be.true;
-      });
-  });
-
-  it('should return a requested number of snippets', function() {
-    nock('http://www.tneu.edu.ua').get(/\/news/).reply(200);
-
-    return index.getSnippets(null, 3)
-      .then(snippets => {
-        expect(snippets).to.have.length(3);
-      });
-  });
-
-  it('should make request to tneu to get article', function() {
-    const api = nock('http://www.tneu.edu.ua').get(/\/news*/).reply(200);
-
-    return index.getArticle('http://www.tneu.edu.ua/news/9585-v-profkomi-studentiv')
-      .then(() => {
-        expect(api.isDone()).to.be.true;
-      });
-  });
-
-  it('should reject an error if article not found', function() {
-    nock('http://www.tneu.edu.ua').get(/\/news*/).reply(404);
-
-    return index.getArticle('http://www.tneu.edu.ua/news/9585-v-profkomi-studentiv')
-      .catch(error => {
-        expect(error.statusCode).to.equal(404);
-      });
+  return index.getArticle(url).catch(error => {
+    expect(error.statusCode).toBe(404);
   });
 });

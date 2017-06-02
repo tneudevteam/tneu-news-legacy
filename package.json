@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/vladgolubev/tneu-news.git"
+    "url": "git+ssh://git@github.com/tneudevteam/tneu-news.git"
   },
   "keywords": [
     "tneu",
@@ -19,22 +19,18 @@
   "author": "Vlad Holubiev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vladgolubev/tneu-news/issues"
+    "url": "https://github.com/tneudevteam/tneu-news/issues"
   },
-  "homepage": "https://github.com/vladgolubev/tneu-news#readme",
+  "homepage": "https://github.com/tneudevteam/tneu-news#readme",
   "dependencies": {
-    "got": "^6.5.0",
+    "got": "^7.0.0",
     "tneu-news-parser": "^1.0.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
     "eslint": "^3.5.0",
     "eslint-config-google": "^0.6.0",
     "eslint-formatter-pretty": "^1.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.0.2",
-    "mockery": "^1.7.0",
-    "nock": "^8.0.0",
-    "sinon": "^1.17.5"
+    "jest": "^20.0.4",
+    "nock": "^9.0.13"
   }
 }
